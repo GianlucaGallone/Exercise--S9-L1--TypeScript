@@ -1,9 +1,5 @@
 "use strict";
 const CONT = document.querySelector('.container');
-const input1 = document.querySelector('#inp1');
-const input2 = document.querySelector('#inp2');
-const value1 = input1 === null || input1 === void 0 ? void 0 : input1.value;
-const value2 = input2 === null || input2 === void 0 ? void 0 : input2.value;
 let NUM = Math.random() * (100 - 1) + 1;
 let NUM_FULL = Math.floor(NUM);
 // ........ Player 1 input ........
@@ -45,16 +41,17 @@ btnResult.innerText = 'Vedi Risultato';
 let resultDiv = document.createElement('div');
 resultDiv.id = 'resultDiv';
 CONT === null || CONT === void 0 ? void 0 : CONT.append(inp1, inp2, scoreCont, btnHouse, btnResult, resultDiv);
+// al click del button "Vedi Risultato" se il punteggio del banco e' uguale a quello di p1 o p2, il giocatore x vince.
 btnResult.addEventListener('click', function () {
-    console.log(houseScore.innerHTML, value1, value2);
-    if (houseScore.innerHTML == p1Score.innerHTML) {
-        resultDiv.innerHTML = 'Congratulations Player1!!!';
+    if (houseScore.innerHTML == p1Score.innerHTML || p2Score.innerHTML) {
+        if (houseScore.innerHTML == p1Score.innerHTML) {
+            resultDiv.innerHTML = 'Congratulations Player1!!!';
+        }
+        else if (houseScore.innerHTML == p2Score.innerHTML) {
+            resultDiv.innerHTML = 'Congratulations Player2!!!';
+        }
+        else if (houseScore.innerHTML != p1Score.innerHTML && p2Score.innerHTML) {
+            resultDiv.innerHTML = 'Both Players lost!';
+        }
     }
-    else
-        resultDiv.innerHTML = 'Player 1 Lost';
-    if (houseScore.innerHTML == p2Score.innerHTML) {
-        resultDiv.innerHTML = 'Congratulations Player2!!!';
-    }
-    else
-        resultDiv.innerHTML = 'Player 2 Lost';
 });
