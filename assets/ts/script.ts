@@ -1,6 +1,6 @@
 const CONT = document.querySelector('.container');
 
-let NUM = Math.random()*(5-1)+1;
+let NUM = Math.random()*(100-1)+1;
 let NUM_FULL = Math.floor(NUM);
 
 // ........ Player 1 input ........
